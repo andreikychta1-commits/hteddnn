@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>люблю</title>
+  <style>
+    :root{
+      /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#cb60b3+0,ad1283+50,de47ac+100;Pink+3D */
+background: linear-gradient(to right,  #e74708e7 0%,#c42b10d0 50%,#e66f20ec 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      --envelope: #d32f2f;
+      --paper: #fff9f0;
+      --stamp: #fdd835;
+      --accent: #b71c1c;
+      font-family: Inter, system-ui, -apple-system, Roboto, "Segoe UI", "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;overflow:hidden;}
+    body{
+      display:grid;place-items:center;
+      background:var(--bg);
+      position:relative;
+    }
+
+    /* Анимированные сердечки */
+    .heart{
+      position:absolute;
+      width:20px;height:20px;
+      background:red;
+      transform:rotate(45deg);
+      animation: floatUp 8s linear infinite;
+      opacity:0.8;
+    }
+    .heart::before,.heart::after{
+      content:'';
+      position:absolute;
+      width:20px;height:20px;
+      background:red;
+      border-radius:50%;
+    }
+    .heart::before{top:-10px;left:0;}
+    .heart::after{left:-10px;top:0;}
+
+    @keyframes floatUp{
+      0%{transform:translateY(100vh) scale(0.8) rotate(45deg);opacity:0;}
+      20%{opacity:0.9;}
+      100%{transform:translateY(-10vh) scale(1.4) rotate(45deg);opacity:0;}
+    }
+
+    .card{width:360px;max-width:90vw;position:relative;z-index:10;}
+
+    .envelope{
+      position:relative;width:100%;height:230px;border-radius:12px;background:var(--envelope);
+      box-shadow:0 8px 30px rgba(0,0,0,0.15);
+      transition:transform .6s ease;
+      display:flex;align-items:center;justify-content:center;flex-direction:column;
+    }
+
+    .stamp{
+      position:absolute;right:18px;top:22px;width:56px;height:56px;border-radius:50%;background:var(--stamp);
+      display:grid;place-items:center;font-weight:700;color:#3b2b00;border:4px solid rgba(0,0,0,0.06);
+      box-shadow:0 8px 20px rgba(0,0,0,0.16);cursor:pointer;z-index:5;user-select:none;transition:transform .15s ease;
+    }
+    .stamp:active{transform:scale(.95)}
+
+    .letter{
+      position:absolute;left:12%;right:12%;top:60%;height:70%;background:var(--paper);border-radius:8px;padding:20px;z-index:2;
+      transform:translateY(60px);opacity:0;transition:transform .6s ease,opacity .5s ease;
+      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+      display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;
+    }
+
+    .envelope.open .letter{transform:translateY(-30px);opacity:1;}
+
+    .message{
+      position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.95);min-width:260px;max-width:92vw;padding:22px;border-radius:12px;background:linear-gradient(180deg,var(--paper),#fff);
+      box-shadow:0 18px 50px rgba(0,0,0,0.25);z-index:999;opacity:0;pointer-events:none;transition:opacity .3s ease,transform .3s ease;
+      text-align:center;
+    }
+    .message.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+    .message h2{margin-bottom:6px;color:var(--accent)}
+    .message p{margin:0;color:#333}
+    .close-btn{margin-top:14px;padding:8px 14px;border-radius:999px;border:0;background:var(--envelope);color:rgb(228, 228, 228);cursor:pointer}
+    .close-btn:hover{background:var(--accent)}
+</style>
+</head>
+<body>
+  <!-- Сердечки на заднем фоне -->
+  <script>
+    const heartCount = 25;
+    for(let i=0;i<heartCount;i++){
+      const h=document.createElement('div');
+      h.className='heart';
+      h.style.left=Math.random()*100+'vw';
+      h.style.animationDelay=(Math.random()*8)+'s';
+      h.style.width=h.style.height=(10+Math.random()*20)+'px';
+      h.style.opacity=0.6+Math.random()*0.4;
+      document.body.appendChild(h);
+    }
+  </script>
+
+  <main class="card">
+    <div class="envelope" id="envelope">
+      <button class="stamp" id="stamp">✉</button>
+      <article class="letter" id="letter">
+        <div class="inner" id="letterInner">Сегодня твой день особенный как ты🥹
+И в твой день рождения я просто скажу <i>Нажми на меня, чтобы узнать что я <h2>хочу</h2> сказать😊</i></div>
+      </article>
+    </div>
+    <p style="text-align:center;margin-top:10px;color:#555;">Нажми на конвертик ❤️</p>
+  </main>
+
+  <div class="message" id="message">
+    <h2 id="msgTitle">С Днём Рождения!</h2>
+    <p id="msgText">Ты свет ✨что нежно зажигает утро✨.
+Ты моя любовь в каждом моём дне💖.
+С тобой весь мир становится уютным🫠
+Как дом🏠 где сердце ❤️может спокойно отдохнуть и рослабится словно я в раю😇.
+
+Ты добра🤗 красива😍 и так заботлива😚
+В тебе есть всё🎁что я искал в мечтах🌌
+С тобой душа спокойна и довольна🥹 
+Словно летит по звёздным облакам☁️
+
+Я не хочу терять ни миг ни взгляд 👀 
+С тобой  мой смысл🫶 мой воздух  мой покой😴.
+Таких как ты🤩 судьба даёт однажды🌠.
+И я счастлив что мне дан шанс быть с тобой❤️</p>
+    <button class="close-btn" id="closeBtn">Закрыть</button>
+  </div>
+
+  <script>
+    const envelope=document.getElementById('envelope');
+    const stamp=document.getElementById('stamp');
+    const letter=document.getElementById('letter');
+    const message=document.getElementById('message');
+    const closeBtn=document.getElementById('closeBtn');
+    let opened=false;
+
+    stamp.addEventListener('click',e=>{
+      e.preventDefault();
+      if(!opened){
+        envelope.classList.add('open');
+        opened=true;
+      }else{
+        envelope.classList.remove('open');
+        opened=false;
+      }
+    });
+
+    letter.addEventListener('click',()=>{
+      if(!opened)return;
+      message.classList.add('show');
+    });
+    closeBtn.addEventListener('click',()=>message.classList.remove('show'));
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')message.classList.remove('show')});
+  </script>
+<script>
+  function showLove() {
+    var popup = document.getElementById('lovePopup');
+    if (popup.style.bottom === "120px") {
+      popup.style.bottom = "-400px";
+    } else {
+      popup.style.bottom = "120px";
+    }
+  }
+</script>
+
+
+</body>
+<div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10;">
+  <button onclick="showLove()" 
+          style="background: crimson; color: white; border: none; border-radius: 25px; padding: 12px 24px; font-size: 18px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+    Моя любовь
+  </button>
+  <div id="lovePopup" style="position: fixed; bottom: -400px; left: 50%; transform: translateX(-50%); background: white; border-radius: 20px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); text-align: center; transition: bottom 1s ease-in-out;">
+    <img src="photo_2025-11-10_00-08-41.jpg" alt="Любимая фотография" style="width: 220px; border-radius: 15px;">
+  </div>
+</div>
+</html>
+<script>
+

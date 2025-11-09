@@ -1,0 +1,195 @@
+
+.text-center {
+  text-align: center;
+  width: 100%;
+  color: rgb(215, 128, 226);
+   height: 1px;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  font-size: 48px; 
+  
+}
+
+
+:root {
+ --color1: #de47ac;
+ --color2: #a31c86;
+ width: 100%;
+ height: auto;
+}
+header, footer, section, article {
+  padding: 200px 0;
+}
+header {
+  padding: 200px 0;
+
+}
+header, footer {
+ /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#cb60b3+0,ad1283+50,de47ac+100;Pink+3D */
+background: linear-gradient(to right,  #cb60b3 0%,#ad1283 50%,#de47ac 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+}
+
+.itd_play {
+    width: 100px;
+    height: 100px;
+    background-color: var(--color1);
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+    border-radius: 30%;
+    transition: all 0.3s ease;
+}
+
+.itd_play:hover {
+    background-color: var(--color2);
+}
+
+.itd_triangle {
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid white;
+    position: absolute;
+    top: 35px;
+    left: 40px;
+}
+
+.btn-itd {
+   display: block;
+   max-width: 60px;
+    margin: 0 auto;
+    padding: 8px 30px;
+    color: white;
+    background-color: var(--color1);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+     margin-top: 10px;
+}
+
+.btn-itd:hover {
+    color: white;
+    background-color: var(--color2);
+}
+
+body {
+  width: 100%;
+  height: auto;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 255, 255);
+  background-image: url('nicekok.png');
+}
+
+
+/* цвет  */
+.color1 {
+  color: var(--color1);
+}
+.color2 {
+  color: var(--color2);
+}
+.bg-color1 {
+  background-color: var(--color1);
+}
+.bg-color2 {
+  background-color: var(--color2);
+}
+
+.about {
+  text-align: center;
+  padding: 40px;
+  background-color: #dfdddd;
+}
+
+.about h2 {
+  color: #0097a7;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.columns {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+}
+
+.column ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.column li {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+html {
+  scroll-behavior: smooth; /* Плавная прокрутка */
+}
+
+.btn {
+  background-color: #e441a0;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #d1368e;
+}
+
+
+.material-card {
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.material-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.material-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #f3f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  color: #c1429b;
+  font-size: 18px;
+  box-shadow: 0 0 0 2px #c142a1;
+}
+
+.material-card p {
+  font-weight: 600;
+  color: #4b4b4b;
+  margin: 0;
+}
+
+.material-card::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #5bc0be;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+
